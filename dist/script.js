@@ -36,22 +36,25 @@
   const service = form?.elements.namedItem('service');
   const message = document.querySelector('#quote-message');
   const result = document.querySelector('[data-quote-result]');
+  const whatsappLink = document.querySelector('[data-quote-whatsapp]');
   const copyButton = document.querySelector('[data-quote-copy]');
   const status = document.querySelector('#quote-status');
   const openButtons = document.querySelectorAll('[data-quote-open]');
   const closeButtons = document.querySelectorAll('[data-quote-close]');
 
   if (typeof dialog?.showModal !== 'function' || !service || !message || !result ||
-      !copyButton || !status || !openButtons.length || !closeButtons.length) {
+      !whatsappLink || !copyButton || !status || !openButtons.length || !closeButtons.length) {
     return;
   }
 
+  const whatsappUrl = whatsappLink.href;
   let opener;
   let quoteRevision = 0;
 
   function clearResult() {
     quoteRevision += 1;
     message.value = '';
+    whatsappLink.href = whatsappUrl;
     status.textContent = '';
     result.hidden = true;
   }
@@ -107,9 +110,12 @@
 
     quoteRevision += 1;
     message.value = lines.join('\n');
+    const chatUrl = new URL(whatsappUrl);
+    chatUrl.searchParams.set('text', message.value);
+    whatsappLink.href = chatUrl.href;
     result.hidden = false;
     message.focus();
-    status.textContent = 'Mensagem pronta para copiar.';
+    status.textContent = 'Mensagem pronta para abrir no WhatsApp.';
   });
 
   copyButton.addEventListener('click', async () => {
@@ -141,7 +147,7 @@
     }
 
     status.textContent = copied
-      ? 'Mensagem copiada. Cole-a na conversa pelo Instagram.'
+      ? 'Mensagem copiada.'
       : 'O texto está selecionado. Use a opção Copiar do seu dispositivo.';
   });
 

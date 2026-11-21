@@ -1,6 +1,6 @@
 # Top Clim Climatização
 
-Site institucional para a Top Clim, de Itaperuna e região (RJ). Apresenta os serviços da empresa, três trabalhos publicados no Instagram e um formulário que prepara uma mensagem de orçamento para o Instagram Direct.
+Site institucional para a Top Clim, de Itaperuna e região (RJ). Apresenta os serviços da empresa, três trabalhos publicados no Instagram e um formulário que prepara uma mensagem de orçamento para o WhatsApp.
 
 ## Abrir o site localmente
 
@@ -18,7 +18,7 @@ Abra [localhost:8000](http://localhost:8000) no navegador. Para hospedar em outr
 - `dist/styles.css` controla a identidade visual e os layouts responsivos.
 - `dist/script.js` controla o menu móvel e a geração da mensagem de orçamento.
 
-O formulário funciona no navegador. O visitante copia a mensagem e decide quando enviá-la na conversa do Instagram.
+O formulário funciona no navegador. O visitante abre a conversa com a mensagem preenchida e decide quando enviá-la pelo WhatsApp.
 
 ## Referências e imagens
 
